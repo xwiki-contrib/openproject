@@ -1,0 +1,114 @@
+<?xml version="1.1" encoding="UTF-8"?>
+
+<!--
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+-->
+
+<xwikidoc version="1.5" reference="OpenProject.Code.OAuth" locale="">
+  <web>OpenProject.Code</web>
+  <name>OAuth</name>
+  <language/>
+  <defaultLanguage/>
+  <translation>0</translation>
+  <creator>xwiki:XWiki.Admin</creator>
+  <parent>WebHome</parent>
+  <author>xwiki:XWiki.Admin</author>
+  <originalMetadataAuthor>XWiki.Admin</originalMetadataAuthor>
+  <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
+  <version>1.1</version>
+  <title/>
+  <comment/>
+  <minorEdit>false</minorEdit>
+  <syntaxId>xwiki/2.1</syntaxId>
+  <hidden>true</hidden>
+  <content>{{groovy}}
+import com.nimbusds.oauth2.sdk.*;
+import com.nimbusds.oauth2.sdk.id.*;
+import com.nimbusds.oauth2.sdk.auth.*;
+import com.nimbusds.oauth2.sdk.http.*;
+import com.nimbusds.oauth2.sdk.token.*;
+
+  
+def configDoc = xwiki.getDocument("OpenProject.Code.OpenProjectConfig")
+configDoc.use("OpenProject.Code.OpenProjectConfigClass")
+def url = configDoc.getValue("url")
+def clientid = configDoc.getValue("clientid")
+def secret = configDoc.getValue("secret")
+
+// The client callback URI, typically pre-registered with the server
+URI callback = new URI(xwiki.getDocument("OpenProject.Code.OAuth").getExternalURL("view"));
+
+
+try {
+// Parse the authorisation response from the callback URI
+AuthorizationResponse authResponse = AuthorizationResponse.parse(new URI(request.getRequestURL().toString() + "?" + request.getQueryString()));
+
+def state = "";
+// Check the returned state parameter, must match the original
+/*
+if (!state.equals(authResponse.getState())) {
+    // Unexpected or tampered response, stop!!!
+    println "State: " + authResponse.getState()
+    println "Error 1";
+}
+*/
+
+if (!authResponse.indicatesSuccess()) {
+    // The request was denied or some error occurred
+    AuthorizationErrorResponse errorResponse = authResponse.toErrorResponse();
+    System.out.println(errorResponse.getErrorObject());
+    println "Error 2";
+}
+
+AuthorizationSuccessResponse successResponse = authResponse.toSuccessResponse();
+
+// Retrieve the authorisation code, to be used later to exchange the code for
+// an access token at the token endpoint of the server
+def code = successResponse.getAuthorizationCode();
+AuthorizationGrant codeGrant = new AuthorizationCodeGrant(code, callback);
+
+// The credentials to authenticate the client at the token endpoint
+ClientID clientID = new ClientID(clientid);
+Secret clientSecret = new Secret(secret);
+ClientAuthentication clientAuth = new ClientSecretBasic(clientID, clientSecret);
+
+// The authorisation endpoint of the server
+URI tokenEndpoint = new URI(url + "/oauth/token");
+
+// Make the token request
+TokenRequest tokenRequest = new TokenRequest(tokenEndpoint, clientAuth, codeGrant);
+TokenResponse tokenResponse = TokenResponse.parse(tokenRequest.toHTTPRequest().send());
+
+if (!tokenResponse.indicatesSuccess()) {
+    // We got an error response...
+    TokenErrorResponse errorResponse = tokenResponse.toErrorResponse();
+    println "Error3 " + errorResponse
+} else {
+ AccessTokenResponse tokenSuccessResponse = tokenResponse.toSuccessResponse();
+
+ // Get the access token, the server may also return a refresh token
+ AccessToken accessToken = tokenSuccessResponse.getTokens().getAccessToken();
+ request.getSession().setAttribute("openproject", accessToken.toString());
+ response.sendRedirect(authResponse.getState().toString())
+ }
+} catch (e) {
+  println e;
+}
+{{/groovy}}</content>
+</xwikidoc>

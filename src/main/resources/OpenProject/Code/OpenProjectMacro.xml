@@ -1,0 +1,1062 @@
+<?xml version="1.1" encoding="UTF-8"?>
+
+<!--
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+-->
+
+<xwikidoc version="1.5" reference="OpenProject.Code.OpenProjectMacro" locale="">
+  <web>OpenProject.Code</web>
+  <name>OpenProjectMacro</name>
+  <language/>
+  <defaultLanguage/>
+  <translation>0</translation>
+  <creator>xwiki:XWiki.Admin</creator>
+  <parent>WebHome</parent>
+  <author>xwiki:XWiki.Admin</author>
+  <originalMetadataAuthor>XWiki.Admin</originalMetadataAuthor>
+  <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
+  <version>1.1</version>
+  <title/>
+  <comment/>
+  <minorEdit>false</minorEdit>
+  <syntaxId>xwiki/2.1</syntaxId>
+  <hidden>true</hidden>
+  <content>
+{{openproject url="https://openproject.services.xwikisas.com/projects/test-group/work_packages?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%2C%22project%22%2C%22updatedAt%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%2C%7B%22n%22%3A%22priority%22%2C%22o%22%3A%22%3D%22%2C%22v%22%3A%5B%228%22%5D%7D%5D%2C%22pp%22%3A20%2C%22pa%22%3A1%7D" /}}
+
+{{openproject id="openproject" project="1"}}
+2,3
+{{/openproject}}
+
+Number of issues: {{openproject id="openproject" project="1" source="filters" style="count"}}
+[]
+{{/openproject}}
+
+{{openproject id="openproject" project="1" source="filters" style="list"}}
+[{ "ID": { "operator": "=", "values": ["2", "3"] } }]
+{{/openproject}}
+
+{{openproject id="openproject" project="1" source="filters" style="table" fields="id,subject,status,assignee,createdAt,updatedAt"}}
+[]
+{{/openproject}}
+
+{{openproject id="openproject" project="1" source="filters" style="stats" statsGroup="status" statsGroupDisplay="Status" }}
+[]
+{{/openproject}}
+
+{{openproject id="openproject" project="1" source="filters" style="openclosegraph" }}
+[]
+{{/openproject}}
+
+
+This is a task from open project {{openproject id="openproject" project="1"}}2{{/openproject}}
+
+ </content>
+  <object>
+    <name>OpenProject.Code.OpenProjectMacro</name>
+    <number>0</number>
+    <className>XWiki.WikiMacroClass</className>
+    <guid>2d4efbcf-abe6-40d6-b3e7-6854896d9d78</guid>
+    <class>
+      <name>XWiki.WikiMacroClass</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <async_cached>
+        <defaultValue>0</defaultValue>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType/>
+        <name>async_cached</name>
+        <number>13</number>
+        <prettyName>Cached</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </async_cached>
+      <async_context>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <freeText>forbidden</freeText>
+        <largeStorage>0</largeStorage>
+        <multiSelect>1</multiSelect>
+        <name>async_context</name>
+        <number>14</number>
+        <prettyName>Context elements</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator>, </separator>
+        <separators>|, </separators>
+        <size>5</size>
+        <unmodifiable>0</unmodifiable>
+        <values>action=Action|doc.reference=Document|doc.revision|icon.theme=Icon theme|locale=Language|rendering.defaultsyntax=Default syntax|rendering.restricted=Restricted|rendering.targetsyntax=Target syntax|request.base=Request base URL|request.cookies|request.headers|request.parameters=Request parameters|request.remoteAddr|request.session|request.url=Request URL|request.wiki=Request wiki|sheet|user=User|wiki=Wiki</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </async_context>
+      <async_enabled>
+        <defaultValue>0</defaultValue>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType/>
+        <name>async_enabled</name>
+        <number>12</number>
+        <prettyName>Asynchronous rendering</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </async_enabled>
+      <code>
+        <disabled>0</disabled>
+        <editor>Text</editor>
+        <name>code</name>
+        <number>10</number>
+        <prettyName>Macro code</prettyName>
+        <restricted>0</restricted>
+        <rows>20</rows>
+        <size>40</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </code>
+      <contentDescription>
+        <contenttype>PureText</contenttype>
+        <disabled>0</disabled>
+        <editor>PureText</editor>
+        <name>contentDescription</name>
+        <number>9</number>
+        <prettyName>Content description (Not applicable for "No content" type)</prettyName>
+        <restricted>0</restricted>
+        <rows>5</rows>
+        <size>40</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </contentDescription>
+      <contentJavaType>
+        <cache>0</cache>
+        <defaultValue>Unknown</defaultValue>
+        <disabled>0</disabled>
+        <displayType>input</displayType>
+        <freeText>allowed</freeText>
+        <largeStorage>1</largeStorage>
+        <multiSelect>0</multiSelect>
+        <name>contentJavaType</name>
+        <number>8</number>
+        <picker>1</picker>
+        <prettyName>Macro content type</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator>|</separator>
+        <separators>|</separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>Unknown|Wiki</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </contentJavaType>
+      <contentType>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <freeText>forbidden</freeText>
+        <largeStorage>0</largeStorage>
+        <multiSelect>0</multiSelect>
+        <name>contentType</name>
+        <number>7</number>
+        <prettyName>Macro content availability</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator>|</separator>
+        <separators>|</separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>Optional|Mandatory|No content</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </contentType>
+      <defaultCategories>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>input</displayType>
+        <freeText>forbidden</freeText>
+        <largeStorage>0</largeStorage>
+        <multiSelect>1</multiSelect>
+        <name>defaultCategories</name>
+        <number>4</number>
+        <prettyName>Default categories</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values/>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </defaultCategories>
+      <description>
+        <contenttype>PureText</contenttype>
+        <disabled>0</disabled>
+        <editor>PureText</editor>
+        <name>description</name>
+        <number>3</number>
+        <prettyName>Macro description</prettyName>
+        <restricted>0</restricted>
+        <rows>5</rows>
+        <size>40</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </description>
+      <id>
+        <disabled>0</disabled>
+        <name>id</name>
+        <number>1</number>
+        <prettyName>Macro id</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </id>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>2</number>
+        <prettyName>Macro name</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+      <priority>
+        <disabled>0</disabled>
+        <name>priority</name>
+        <number>11</number>
+        <numberType>integer</numberType>
+        <prettyName>Priority</prettyName>
+        <size>10</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.NumberClass</classType>
+      </priority>
+      <supportsInlineMode>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType>yesno</displayType>
+        <name>supportsInlineMode</name>
+        <number>5</number>
+        <prettyName>Supports inline mode</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </supportsInlineMode>
+      <visibility>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <freeText>forbidden</freeText>
+        <largeStorage>0</largeStorage>
+        <multiSelect>0</multiSelect>
+        <name>visibility</name>
+        <number>6</number>
+        <prettyName>Macro visibility</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator>|</separator>
+        <separators>|</separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>Current User|Current Wiki|Global</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </visibility>
+    </class>
+    <property>
+      <async_cached>0</async_cached>
+    </property>
+    <property>
+      <async_context>
+        <value>doc.revision</value>
+      </async_context>
+    </property>
+    <property>
+      <async_enabled>0</async_enabled>
+    </property>
+    <property>
+      <code>{{groovy}}
+import groovy.json.*;
+import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import org.apache.http.client.utils.URLEncodedUtils;
+import java.nio.charset.Charset;
+
+def getContentFromURL(url, token) {
+   try {
+      def pageURL = new URL(url)
+      def conn = pageURL.openConnection()
+      conn.setRequestProperty("Authorization", "Bearer " + token);
+      if(conn.responseCode == 200) {
+        def jsonSlurper = new JsonSlurper()
+        return jsonSlurper.parseText(conn.content.text);
+      } else {
+        println "Response code not 200. ${conn.responseCode}"
+        return null;
+      }
+    } catch (e) {
+      println "Exception ${e}"
+      return null;
+   }
+ }
+
+ def getFieldFromIssue(issue, field) {
+  def value = issue;
+  field.split('\\.').each { fieldPart -&gt;
+    if (value != null) {
+      if (value[fieldPart]) {
+        value = value[fieldPart];
+      } else if (value._links) {
+         value = value._links[fieldPart];
+      }
+    }
+  }
+  if (value==null) {
+    value = "";
+  }
+  if (!(value instanceof String))
+   value = value.title ? value.title : ""
+
+  return value;
+}
+
+def getOpenCloseGraph(issues, openCloseGraphDays) {
+  def table = []
+  def df1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX");
+  def today = new Date()
+  for (def i=0;i&lt;openCloseGraphDays;i++) {
+    table[i] = [ opened: 0, closed: 0]
+  }
+  def initialNbOpen = 0
+  for (issue in issues) {
+     def openDate = df1.parse(issue.createdAt);
+     def nbDaysOpen = today.minus(openDate)
+     if (nbDaysOpen&lt;openCloseGraphDays) {
+       table[nbDaysOpen]["opened"] = table[nbDaysOpen]["opened"] + 1;
+     } else {
+       initialNbOpen++;
+     }
+
+     if (issue._links.status.title=="Closed") {
+       def closedDate = df1.parse(issue.updatedAt);
+       def nbDaysClosed = today.minus(closedDate)
+       if (nbDaysClosed&lt;openCloseGraphDays) {
+         table[nbDaysClosed]["closed"] = table[nbDaysClosed]["closed"]  + 1;
+       } else {
+         initialNbOpen--;
+       }
+     }
+  }
+  def table2 = []
+  table2[0] = [open: initialNbOpen, newopen: 0, closed: 0];
+  def rtable = table.reverse()
+  for (def i=0;i&lt;rtable.size();i++) {
+     table2[i+1] = [open:  table2[i]["open"] + rtable[i]["opened"] - rtable[i]["closed"], newopen : rtable[i]["opened"], closed : rtable[i]["closed"]];
+  }
+  return table2;
+}
+
+def getStats(issues, statsGroup, statsGroupDisplay, statsGroupSort, statsShowOpenClosed, statsShowOpenClosedRecent) {
+  if (statsGroup==null || statsGroup=="")
+  statsGroup = "assignee.title"
+  if (statsGroup=="project")
+  statsGroup = "project.title"
+  if (statsGroupDisplay==null || statsGroupDisplay=="")
+  statsGroupDisplay = statsGroup;
+  if (statsGroupSort!="key") {
+    statsGroupSort = "value"
+  }
+  def table = [:]
+  def df1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX");
+  def today = new Date()
+  for (issue in issues) {
+    def item = getFieldFromIssue(issue, statsGroup);
+    // if (statsGroup=="project.title") {
+    //  item = item.substring(item.lastIndexOf("/")+1, item.lastIndexOf("#"))
+    // }
+    if (item!="") {
+      def addopen = 1;
+      def addclosed = 0;
+      def addclosedrecent = 0;
+      if (statsShowOpenClosed) {
+         if (issue.status.title=="Closed") {
+           addopen = 0
+           addclosed = 1
+           addclosedrecent = 0
+           def closedDate = df1.parse(issue.closedAt);
+           def nbDaysClosed = today.minus(closedDate)
+           if (nbDaysClosed&lt;=statsShowOpenClosedRecent)
+              addclosedrecent = 1;
+         }
+      }
+      if (table[item]) {
+        table[item]["all"] = table[item]["all"] + 1;
+        table[item]["opened"] = table[item]["opened"] + addopen;
+        table[item]["closed"] = table[item]["closed"] + addclosed;
+        table[item]["closedrecent"] = table[item]["closedrecent"] + addclosedrecent;
+      } else {
+        table[item] = [ all : 1, opened: addopen, closed: addclosed, closedrecent: addclosedrecent];
+      }
+    }
+  }
+  def sortedTable = (statsGroupSort=="value")
+  ? table.sort { a, b -&gt; b.value["opened"] &lt;=&gt; a.value["opened"] }
+  : table.sort { a, b -&gt; a.key &lt;=&gt; b.key };
+  return sortedTable;
+}
+
+def getConfig() {
+  def url = wikimacro.parameters.url;
+  def apiURL = ""
+  def id = wikimacro.parameters.id
+  def project = wikimacro.parameters.project
+  def style = wikimacro.parameters.style
+  def source = wikimacro.parameters.source
+  def filters = wikimacro.content
+  def fields =  wikimacro.parameters.fields
+  if (url &amp;&amp; url!="") {
+    // Example: https://openproject.services.xwikisas.com/projects/test-group/work_packages?query_props=%7B%22c%22%3A%5B%22id%22%2C%22subject%22%2C%22type%22%2C%22status%22%2C%22assignee%22%2C%22priority%22%5D%2C%22hi%22%3Atrue%2C%22g%22%3A%22%22%2C%22is%22%3Atrue%2C%22tv%22%3Afalse%2C%22t%22%3A%22id%3Aasc%22%2C%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22o%22%2C%22v%22%3A%5B%5D%7D%2C%7B%22n%22%3A%22id%22%2C%22o%22%3A%22%3D%22%2C%22v%22%3A%5B%2237%22%2C%2238%22%5D%7D%5D%2C%22pp%22%3A20%2C%22pa%22%3A1%7D
+    def authobjs = xwiki.getDocument("OpenProject.Code.OpenProjectConfig").getObjects("OpenProject.Code.OpenProjectConfigClass")
+    for (authobj in authobjs) {
+      def authobjapiUrl = authobj.getProperty("url").property.value
+      if (url.startsWith(authobjapiUrl)) {
+        apiURL = authobjapiUrl
+        id = authobj.getProperty("id").property.value
+        break;
+      }
+    }
+    project = url.replaceAll("/work_packages.*", "").replaceAll(".*/projects/", "")
+    def encodeUtils = new URLEncodedUtils()
+    def params = URLEncodedUtils.parse(new URI(url), Charset.forName("UTF-8"));
+    def query_props = []
+    for (def param : params) {
+          if (param.getName().equals("query_props")) {
+               def parameter = param.getValue()
+               if (parameter!="") {
+                 def jsonSlurper = new JsonSlurper()
+                 query_props = jsonSlurper.parseText(parameter);
+                 if (request.details) 
+                   println "Query props: {{{ ${query_props} }}}"
+                 if (style==null)
+                   style = "table";
+                 source = "filters"
+               }
+          }
+    }
+    def newFilter = new ArrayList()
+    for (item in query_props.f) {
+      def val =  [ operator: item.o, values: item.v ]
+      def arrayItem = new HashMap()
+      arrayItem.put(item.n, val)
+      newFilter.add(arrayItem)
+    }
+    def jsonOutput = new JsonOutput()
+    filters = jsonOutput.toJson(newFilter)
+    if (query_props.c)
+      fields = query_props.c.join(",")
+  } else {
+    def instanceId = xcontext.macro.params.id
+    def authobj = xwiki.getDocument("OpenProject.Code.OpenProjectConfig").getObject("OpenProject.Code.OpenProjectConfigClass", "id", instanceId)
+    token = ""
+    if (authobj) {
+      apiURL = authobj.getProperty("url").property.value
+    }
+  }
+  if (source==null || source=="")
+     source = list
+  return [ id: id, apiURL : apiURL, project: project, filters : filters, fields: fields, source: source, style: style]
+}
+
+def config = getConfig()
+if (request.details)
+  println "Config: {{{ ${config} }}}"
+def accessToken = request.getSession().getAttribute("openproject")
+if (accessToken==null || accessToken=="") {
+  request.getSession().setAttribute("openproject_id", config.id)
+  println "{{include reference='OpenProject.Code.AuthButton' /}}"
+} else {
+  def baseURL = config.apiURL + "/api/v3/projects/" + config.project + "/work_packages"
+  def filters = ""
+  if (config.source=="filters") {
+    filters = config.filters
+  } else if (config.source=="list") {
+    def wpitems = config.filters.split(",");
+    def wplist = new ArrayList()
+    for (wp in wpitems) {
+      wplist.add('"' + wp + '"')
+    }
+    def wps = wplist.join(",")
+    filters = """[{ "ID": { "operator": "=", "values": [${wps}]} }]"""
+  }
+  def finalURL = baseURL + "?pageSize=1000&amp;filters=" + URLEncoder.encode(filters)
+  if (request.details)
+    println "Final URL: {{{ ${finalURL}}}}"
+  def workpackages = getContentFromURL(finalURL, accessToken)
+  def issues = (workpackages &amp;&amp; workpackages._embedded &amp;&amp; workpackages._embedded.elements) ? workpackages._embedded.elements : [];
+  if (config.style=="table") {
+      for (field in config.fields.split(","))
+       print "|= {{translation key=\"openproject.macros.field.${field}\" /}}";
+      println ""
+  }
+
+  if (config.style=="count") {
+          def issueUrl = config.apiURL; // getIssuesUri(url, xcontext.macro.params.uri, issueFilterList) https://openproject.services.xwikisas.com/projects/demo-project/work_packages?query_props=%7B%22f%22%3A%5B%7B%22n%22%3A%22status%22%2C%22o%22%3A%22*%22%2C%22v%22%3A%5B%5D%7D%2C%7B%22n%22%3A%22id%22%2C%22o%22%3A%22%3D%22%2C%22v%22%3A%5B%222%22%2C%223%22%2C%224%22%5D%7D%5D%7D
+          // {"f":[{"n":"status","o":"*","v":[]},{"n":"id","o":"=","v":["2","3","4"]}]}
+          println "[[" + issues.size() + "&gt;&gt;url:" + issueUrl + "]]"
+  } else if (config.style=="stats") {
+          def statsGroup = xcontext.macro.params.statsGroup;
+          def statsGroupDisplay = xcontext.macro.params.statsGroupDisplay;
+          def statsGroupSort = xcontext.macro.params.statsGroupSort;
+          def statsShowOpenClosed = (xcontext.macro.params.statsShowOpenClosed == "1");
+          def statsShowOpenClosedRecent = (xcontext.macro.params.statsShowOpenClosedRecent==null) ? 0 : Integer.parseInt(xcontext.macro.params.statsShowOpenClosedRecent);
+          def sortedTable = getStats(issues, statsGroup, statsGroupDisplay, statsGroupSort, statsShowOpenClosed, statsShowOpenClosedRecent);
+          if (statsShowOpenClosedRecent) {
+            println """|= {{translation key=\"openproject.macros.field.${statsGroup}\" /}} |= ${services.localization.render("openproject.macros.stats.open")} |= ${services.localization.render("openproject.macros.stats.closed")} |= ${services.localization.render("openproject.macros.stats.closedrecently")} (${statsShowOpenClosedRecent} ${services.localization.render("openproject.macros.stats.days")})"""
+            for (item in sortedTable.keySet()) {
+               println """|((( ${item} )))| ${sortedTable[item]["opened"]} | ${sortedTable[item]["closed"]} | ${sortedTable[item]["closedrecent"]}"""
+            }
+          } else if (statsShowOpenClosed) {
+            println """|= {{translation key=\"openproject.macros.field.${statsGroup}\" /}} |= ${services.localization.render("openproject.macros.stats.open")} |= ${services.localization.render("openproject.macros.stats.closed")}"""
+            for (item in sortedTable.keySet()) {
+               println """|((( ${item} )))| ${sortedTable[item]["opened"]} | ${sortedTable[item]["closed"]}"""
+            }
+          } else {
+            println """|= {{translation key=\"openproject.macros.field.${statsGroup}\" /}} |= ${services.localization.render("openproject.macros.stats.nb")}"""
+            for (item in sortedTable.keySet()) {
+               println """|((( ${item} )))| ${sortedTable[item]["all"]}"""
+            }
+          }
+  } else if (config.style=="openclosegraph") {
+          def openCloseGraphDays = (xcontext.macro.params.openCloseGraphDays==null) ? 30 : Integer.parseInt(xcontext.macro.params.openCloseGraphDays);
+          def graphId = (xcontext.macro.params.graphId) ? "graph${xcontext.macro.params.graphId}" : "graph";
+          def data = getOpenCloseGraph(issues, openCloseGraphDays)
+          println ""
+          println """{{tableToChartJS type="line" table="${graphId}" multipleDataSets="true" /}}"""
+          println ""
+          println """(% id="${graphId}" style="display: none;" %)"""
+          println "|=${services.localization.render("openproject.macros.graph.days")}|=${services.localization.render("openproject.macros.graph.open")}|=${services.localization.render("openproject.macros.graph.newlyopen")}|=${services.localization.render("openproject.macros.graph.closed")}"
+          for (def i=0;i&lt;=openCloseGraphDays;i++) {
+            def days = openCloseGraphDays - i
+            println """|${days}|${data[i]["open"]}|${data[i]["newopen"]}|${data[i]["closed"]}"""
+          }
+  } else {
+         for (issue in issues) {
+           def wpurl = config.apiURL + "/projects/" + config.project + "/work_packages/" + issue.id
+           def status = issue._links.status.title
+           def sid = (status=="Closed") ? "--${issue.id}--" : issue.id
+           if (config.style=="table") {
+             for (field in config.fields.split(",")) {
+               if (field=="id") {
+                 if ("Closed".equals(issue._links.status.title.toString()))
+                   print "|--[[${issue.id}&gt;&gt;url:${wpurl}]]"
+                 else
+                   print "|[[${issue.id}&gt;&gt;url:${wpurl}]]"
+               } else {
+                   def value = getFieldFromIssue(issue, field);
+                   print "|((( ${value} )))";
+               }
+             }
+             println ""
+           } else if (config.style=="list") {
+             println "[[${sid} ${issue.subject}&gt;&gt;url:${wpurl}]]"
+           } else if (config.style="enum" || style==null || style=="") {
+             print "[[${sid}&gt;&gt;url:${wpurl}]] "
+           }
+         }
+         // println workpackages
+  }
+}
+{{/groovy}}</code>
+    </property>
+    <property>
+      <contentDescription/>
+    </property>
+    <property>
+      <contentJavaType>Unknown</contentJavaType>
+    </property>
+    <property>
+      <contentType>Optional</contentType>
+    </property>
+    <property>
+      <defaultCategories/>
+    </property>
+    <property>
+      <description>Displaying Workpackages from OpenProject</description>
+    </property>
+    <property>
+      <id>openproject</id>
+    </property>
+    <property>
+      <name>OpenProject Workpackages List</name>
+    </property>
+    <property>
+      <priority/>
+    </property>
+    <property>
+      <supportsInlineMode>1</supportsInlineMode>
+    </property>
+    <property>
+      <visibility>Current Wiki</visibility>
+    </property>
+  </object>
+  <object>
+    <name>OpenProject.Code.OpenProjectMacro</name>
+    <number>0</number>
+    <className>XWiki.WikiMacroParameterClass</className>
+    <guid>7efb2495-64ca-41e4-870f-d99299274961</guid>
+    <class>
+      <name>XWiki.WikiMacroParameterClass</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <defaultValue>
+        <disabled>0</disabled>
+        <name>defaultValue</name>
+        <number>4</number>
+        <prettyName>Parameter default value</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </defaultValue>
+      <description>
+        <disabled>0</disabled>
+        <name>description</name>
+        <number>2</number>
+        <prettyName>Parameter description</prettyName>
+        <restricted>0</restricted>
+        <rows>5</rows>
+        <size>40</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </description>
+      <mandatory>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType>yesno</displayType>
+        <name>mandatory</name>
+        <number>3</number>
+        <prettyName>Parameter mandatory</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </mandatory>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>1</number>
+        <prettyName>Parameter name</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+      <type>
+        <cache>0</cache>
+        <defaultValue>Unknown</defaultValue>
+        <disabled>0</disabled>
+        <displayType>input</displayType>
+        <freeText>allowed</freeText>
+        <largeStorage>1</largeStorage>
+        <multiSelect>0</multiSelect>
+        <name>type</name>
+        <number>5</number>
+        <picker>1</picker>
+        <prettyName>Parameter type</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator>|</separator>
+        <separators>|</separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>Unknown|Wiki</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </type>
+    </class>
+    <property>
+      <defaultValue/>
+    </property>
+    <property>
+      <description>ID of OpenProject instance to use</description>
+    </property>
+    <property>
+      <mandatory/>
+    </property>
+    <property>
+      <name>id</name>
+    </property>
+    <property>
+      <type/>
+    </property>
+  </object>
+  <object>
+    <name>OpenProject.Code.OpenProjectMacro</name>
+    <number>1</number>
+    <className>XWiki.WikiMacroParameterClass</className>
+    <guid>7218b61b-aae7-4043-8567-e251ae0e3305</guid>
+    <class>
+      <name>XWiki.WikiMacroParameterClass</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <defaultValue>
+        <disabled>0</disabled>
+        <name>defaultValue</name>
+        <number>4</number>
+        <prettyName>Parameter default value</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </defaultValue>
+      <description>
+        <disabled>0</disabled>
+        <name>description</name>
+        <number>2</number>
+        <prettyName>Parameter description</prettyName>
+        <restricted>0</restricted>
+        <rows>5</rows>
+        <size>40</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </description>
+      <mandatory>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType>yesno</displayType>
+        <name>mandatory</name>
+        <number>3</number>
+        <prettyName>Parameter mandatory</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </mandatory>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>1</number>
+        <prettyName>Parameter name</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+      <type>
+        <cache>0</cache>
+        <defaultValue>Unknown</defaultValue>
+        <disabled>0</disabled>
+        <displayType>input</displayType>
+        <freeText>allowed</freeText>
+        <largeStorage>1</largeStorage>
+        <multiSelect>0</multiSelect>
+        <name>type</name>
+        <number>5</number>
+        <picker>1</picker>
+        <prettyName>Parameter type</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator>|</separator>
+        <separators>|</separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>Unknown|Wiki</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </type>
+    </class>
+    <property>
+      <defaultValue/>
+    </property>
+    <property>
+      <description>Project ID to query</description>
+    </property>
+    <property>
+      <mandatory>0</mandatory>
+    </property>
+    <property>
+      <name>project</name>
+    </property>
+    <property>
+      <type/>
+    </property>
+  </object>
+  <object>
+    <name>OpenProject.Code.OpenProjectMacro</name>
+    <number>2</number>
+    <className>XWiki.WikiMacroParameterClass</className>
+    <guid>04fb46c5-c40f-45b2-b10e-1756ccea3853</guid>
+    <class>
+      <name>XWiki.WikiMacroParameterClass</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <defaultValue>
+        <disabled>0</disabled>
+        <name>defaultValue</name>
+        <number>4</number>
+        <prettyName>Parameter default value</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </defaultValue>
+      <description>
+        <disabled>0</disabled>
+        <name>description</name>
+        <number>2</number>
+        <prettyName>Parameter description</prettyName>
+        <restricted>0</restricted>
+        <rows>5</rows>
+        <size>40</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </description>
+      <mandatory>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType>yesno</displayType>
+        <name>mandatory</name>
+        <number>3</number>
+        <prettyName>Parameter mandatory</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </mandatory>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>1</number>
+        <prettyName>Parameter name</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+      <type>
+        <cache>0</cache>
+        <defaultValue>Unknown</defaultValue>
+        <disabled>0</disabled>
+        <displayType>input</displayType>
+        <freeText>allowed</freeText>
+        <largeStorage>1</largeStorage>
+        <multiSelect>0</multiSelect>
+        <name>type</name>
+        <number>5</number>
+        <picker>1</picker>
+        <prettyName>Parameter type</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator>|</separator>
+        <separators>|</separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>Unknown|Wiki</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </type>
+    </class>
+    <property>
+      <defaultValue>list</defaultValue>
+    </property>
+    <property>
+      <description>Source of Workpackages (list, filters)</description>
+    </property>
+    <property>
+      <mandatory/>
+    </property>
+    <property>
+      <name>source</name>
+    </property>
+    <property>
+      <type/>
+    </property>
+  </object>
+  <object>
+    <name>OpenProject.Code.OpenProjectMacro</name>
+    <number>3</number>
+    <className>XWiki.WikiMacroParameterClass</className>
+    <guid>7f97f53e-45a5-4c15-bac5-d31442d0ec45</guid>
+    <class>
+      <name>XWiki.WikiMacroParameterClass</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <defaultValue>
+        <disabled>0</disabled>
+        <name>defaultValue</name>
+        <number>4</number>
+        <prettyName>Parameter default value</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </defaultValue>
+      <description>
+        <disabled>0</disabled>
+        <name>description</name>
+        <number>2</number>
+        <prettyName>Parameter description</prettyName>
+        <restricted>0</restricted>
+        <rows>5</rows>
+        <size>40</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </description>
+      <mandatory>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType>yesno</displayType>
+        <name>mandatory</name>
+        <number>3</number>
+        <prettyName>Parameter mandatory</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </mandatory>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>1</number>
+        <prettyName>Parameter name</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+      <type>
+        <cache>0</cache>
+        <defaultValue>Unknown</defaultValue>
+        <disabled>0</disabled>
+        <displayType>input</displayType>
+        <freeText>allowed</freeText>
+        <largeStorage>1</largeStorage>
+        <multiSelect>0</multiSelect>
+        <name>type</name>
+        <number>5</number>
+        <picker>1</picker>
+        <prettyName>Parameter type</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator>|</separator>
+        <separators>|</separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>Unknown|Wiki</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </type>
+    </class>
+    <property>
+      <defaultValue>id,subject,status.title,createdAt</defaultValue>
+    </property>
+    <property>
+      <description>Fields to display</description>
+    </property>
+    <property>
+      <mandatory/>
+    </property>
+    <property>
+      <name>fields</name>
+    </property>
+    <property>
+      <type/>
+    </property>
+  </object>
+  <object>
+    <name>OpenProject.Code.OpenProjectMacro</name>
+    <number>4</number>
+    <className>XWiki.WikiMacroParameterClass</className>
+    <guid>b616d7d9-e784-4150-9194-c81985de70df</guid>
+    <class>
+      <name>XWiki.WikiMacroParameterClass</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <defaultValue>
+        <disabled>0</disabled>
+        <name>defaultValue</name>
+        <number>4</number>
+        <prettyName>Parameter default value</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </defaultValue>
+      <description>
+        <disabled>0</disabled>
+        <name>description</name>
+        <number>2</number>
+        <prettyName>Parameter description</prettyName>
+        <restricted>0</restricted>
+        <rows>5</rows>
+        <size>40</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+      </description>
+      <mandatory>
+        <disabled>0</disabled>
+        <displayFormType>select</displayFormType>
+        <displayType>yesno</displayType>
+        <name>mandatory</name>
+        <number>3</number>
+        <prettyName>Parameter mandatory</prettyName>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+      </mandatory>
+      <name>
+        <disabled>0</disabled>
+        <name>name</name>
+        <number>1</number>
+        <prettyName>Parameter name</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </name>
+      <type>
+        <cache>0</cache>
+        <defaultValue>Unknown</defaultValue>
+        <disabled>0</disabled>
+        <displayType>input</displayType>
+        <freeText>allowed</freeText>
+        <largeStorage>1</largeStorage>
+        <multiSelect>0</multiSelect>
+        <name>type</name>
+        <number>5</number>
+        <picker>1</picker>
+        <prettyName>Parameter type</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator>|</separator>
+        <separators>|</separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>Unknown|Wiki</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </type>
+    </class>
+    <property>
+      <defaultValue/>
+    </property>
+    <property>
+      <description>Project an OpenProject URL with filters</description>
+    </property>
+    <property>
+      <mandatory/>
+    </property>
+    <property>
+      <name>url</name>
+    </property>
+    <property>
+      <type/>
+    </property>
+  </object>
+</xwikidoc>

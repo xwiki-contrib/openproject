@@ -1,0 +1,88 @@
+<?xml version="1.1" encoding="UTF-8"?>
+
+<!--
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+-->
+
+<xwikidoc version="1.5" reference="OpenProject.Code.OpenProjectConfigSheet" locale="">
+  <web>OpenProject.Code</web>
+  <name>OpenProjectConfigSheet</name>
+  <language/>
+  <defaultLanguage/>
+  <translation>0</translation>
+  <creator>xwiki:XWiki.Admin</creator>
+  <parent>WebHome</parent>
+  <author>xwiki:XWiki.Admin</author>
+  <originalMetadataAuthor>XWiki.Admin</originalMetadataAuthor>
+  <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
+  <version>1.1</version>
+  <title>OpenProject Config Sheet</title>
+  <comment/>
+  <minorEdit>false</minorEdit>
+  <syntaxId>xwiki/2.1</syntaxId>
+  <hidden>true</hidden>
+  <content>{{velocity}}
+#set ($redirect = $xwiki.relativeRequestURL)
+#set ($configDoc = $xwiki.getDocument('OpenProject.Code.OpenProjectConfig'))
+## If there's no xobject create one!
+#set ($configClassName = 'OpenProject.Code.OpenProjectConfigClass')
+#set ($configObject = $configDoc.getObject($configClassName))
+#if ($xcontext.action == 'admin' &amp;&amp; "$!configObject" == '')
+  #set ($configObject = $configDoc.newObject($configClassName))
+  #set ($discard = $configDoc.save('Created empty OpenProject configuration', true))
+#end
+{{html clean="false"}}
+  &lt;form id="openprojectConfig" method="post" action="$configDoc.getURL("save", "xredirect=$escapetool.url(${redirect})")" class="withLock xform"&gt;
+    &lt;fieldset&gt;
+      &lt;dl&gt;
+        &lt;dt&gt;
+          &lt;label for='openprojectInstances'&gt;$services.localization.render('openproject.config.label')&lt;/label&gt;
+          &lt;span class='xHint'&gt;$services.localization.render('openproject.config.label.hint')&lt;/span&gt;
+        &lt;/dt&gt;
+        &lt;dd&gt;
+          &lt;br /&gt;
+          &lt;div id='openprojectInstances'&gt;
+{{/html}}
+
+#if ($request.add)
+  #set ($newConfigObject = $configDoc.newObject($configClassName))
+  #set ($discard = $configDoc.save('Added OpenProject configuration', true))
+  $response.sendRedirect($xwiki.relativeRequestURL.replaceAll("&amp;add=1", ""))
+#end
+
+|=$services.localization.render('openproject.config.id')|=$services.localization.render('openproject.config.url')|=$services.localization.render('openproject.config.clientid')|=$services.localization.render('openproject.config.secret')|=$services.localization.render('openproject.config.delete')
+#foreach($serverObject in $configDoc.getObjects($configClassName))
+  #set ($deleteURL = $configDoc.getURL('objectremove', "form_token=$!{services.csrf.getToken()}&amp;classname=${escapetool.url($configClassName)}&amp;classid=${serverObject.number}&amp;xredirect=${escapetool.url($redirect)}"))
+  |$serverObject.display('id', 'edit')|$serverObject.display('url', 'edit')|$serverObject.display('clientid', 'edit')|$serverObject.display('secret', 'edit')|=[[image:icon:cross&gt;&gt;path:$deleteURL]]
+#end
+
+{{html clean="false"}}
+          &lt;/div&gt;
+        &lt;/dd&gt;
+      &lt;/dl&gt;
+    &lt;/fieldset&gt;
+    &lt;input type="hidden" name="form_token" value="$!{services.csrf.getToken()}" /&gt;
+    &lt;input type="submit" value="$services.localization.render('openproject.config.save')" name="formactionsac" class="button" /&gt;
+    &lt;span class="buttonwrapper"&gt;
+      &lt;a href="${xwiki.relativeRequestURL}&amp;add=1" class="xobject-add-control"&gt;$services.localization.render('openproject.config.add')&lt;/a&gt;
+    &lt;/span&gt;
+  &lt;/form&gt;
+{{/html}}
+{{/velocity}}</content>
+</xwikidoc>

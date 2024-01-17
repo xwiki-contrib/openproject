@@ -1,0 +1,111 @@
+<?xml version="1.1" encoding="UTF-8"?>
+
+<!--
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+-->
+
+<xwikidoc version="1.5" reference="OpenProject.Code.Translations" locale="">
+  <web>OpenProject.Code</web>
+  <name>Translations</name>
+  <language/>
+  <defaultLanguage>en</defaultLanguage>
+  <translation>0</translation>
+  <creator>xwiki:XWiki.Admin</creator>
+  <parent>WebHome</parent>
+  <author>xwiki:XWiki.Admin</author>
+  <originalMetadataAuthor>XWiki.Admin</originalMetadataAuthor>
+  <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
+  <version>1.1</version>
+  <title>Translations</title>
+  <comment/>
+  <minorEdit>false</minorEdit>
+  <syntaxId>plain/1.0</syntaxId>
+  <hidden>true</hidden>
+  <content>admin.openproject=OpenProject Macros
+openproject.config.label=OpenProject Instance Definitions
+openproject.config.label.hint=Defines access to OpenProject instances and associates an ID to each. This ID can then be used in various OpenProject components whenever a OpenProject instance is required, such as in a parameter for the OpenProject Macros.
+openproject.config.id=Id
+openproject.config.url=OpenProject URL
+openproject.config.clientid=OAUTH clientid
+openproject.config.secret=OAUTH secret
+openproject.config.delete=Delete
+openproject.config.save=Save
+openproject.config.add=Add OpenProject instance
+openproject.macros.badurl=No or wrong URL provided for OpenProject instance
+openproject.macros.authfailed=Authentication failed accessing OpenProject instance
+openproject.macros.field.assignee.title=Assignee
+openproject.macros.field.project.title=Project
+openproject.macros.field.createdAt=Created at
+openproject.macros.field.id=ID
+openproject.macros.field.milestone=Milestone
+openproject.macros.field.status=Status
+openproject.macros.field.subject=Subject
+openproject.macros.field.assignee=Assignee
+openproject.macros.field.priority=Priority
+openproject.macros.field.type=Type
+openproject.macros.field.updatedAt=Updated at
+openproject.macros.field.project=Project
+openproject.macros.stats.open=Open
+openproject.macros.stats.closed=Closed
+openproject.macros.stats.closedrecently=Closed recently
+openproject.macros.stats.days=days
+openproject.macros.stats.nb=Nb
+openproject.macros.graph.days=Days
+openproject.macros.graph.open=Open
+openproject.macros.graph.newlyopen=Newly Open
+openproject.macros.graph.closed=Closed
+</content>
+  <object>
+    <name>OpenProject.Code.Translations</name>
+    <number>0</number>
+    <className>XWiki.TranslationDocumentClass</className>
+    <guid>7b31766d-1dae-486a-b677-74c2055fe615</guid>
+    <class>
+      <name>XWiki.TranslationDocumentClass</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <scope>
+        <cache>0</cache>
+        <disabled>0</disabled>
+        <displayType>select</displayType>
+        <freeText>forbidden</freeText>
+        <largeStorage>0</largeStorage>
+        <multiSelect>0</multiSelect>
+        <name>scope</name>
+        <number>1</number>
+        <prettyName>Scope</prettyName>
+        <relationalStorage>0</relationalStorage>
+        <separator> </separator>
+        <separators>|, </separators>
+        <size>1</size>
+        <unmodifiable>0</unmodifiable>
+        <values>GLOBAL|WIKI|USER|ON_DEMAND</values>
+        <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+      </scope>
+    </class>
+    <property>
+      <scope>WIKI</scope>
+    </property>
+  </object>
+</xwikidoc>

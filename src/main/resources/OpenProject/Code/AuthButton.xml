@@ -1,0 +1,87 @@
+<?xml version="1.1" encoding="UTF-8"?>
+
+<!--
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+-->
+
+<xwikidoc version="1.5" reference="OpenProject.Code.AuthButton" locale="">
+  <web>OpenProject.Code</web>
+  <name>AuthButton</name>
+  <parent>OpenProject.Code.WebHome</parent>
+  <language/>
+  <defaultLanguage/>
+  <translation>0</translation>
+  <creator>xwiki:XWiki.Admin</creator>
+  <author>xwiki:XWiki.Admin</author>
+  <originalMetadataAuthor>XWiki.Admin</originalMetadataAuthor>
+  <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
+  <version>1.1</version>
+  <title/>
+  <comment/>
+  <minorEdit>false</minorEdit>
+  <syntaxId>xwiki/2.1</syntaxId>
+  <hidden>true</hidden>
+  <content>{{groovy}}
+import com.nimbusds.oauth2.sdk.*;
+import com.nimbusds.oauth2.sdk.id.*;
+
+def configDoc = xwiki.getDocument("OpenProject.Code.OpenProjectConfig")
+configDoc.use("OpenProject.Code.OpenProjectConfigClass")
+def id = request.getSession().getAttribute("openproject_id")
+if (id==null)
+  id = "openproject"
+
+configDoc.use(configDoc.getObject("OpenProject.Code.OpenProjectConfigClass", "id", id))
+def url = configDoc.getValue("url")
+def clientid = configDoc.getValue("clientid")
+def secret = configDoc.getValue("secret")
+
+// The authorisation endpoint of the server
+URI authzEndpoint = new URI(url + "/oauth/authorize");
+
+// The client identifier provisioned by the server
+ClientID clientID = new ClientID(clientid);
+
+// The requested scope values for the token
+Scope scope = new Scope("api_v3");
+
+// The client callback URI, typically pre-registered with the server
+URI callback = new URI(xwiki.getDocument("OpenProject.Code.OAuth").getExternalURL("view"));
+
+// Generate random state string for pairing the response to the request
+State state = new State(request.getRequestURL().toString() + "?" + request.getQueryString());
+
+// Build the request
+AuthorizationRequest request = new AuthorizationRequest.Builder(
+    new ResponseType(ResponseType.Value.CODE), clientID)
+    .scope(scope)
+    .state(state)
+    .redirectionURI(callback)
+    .endpointURI(authzEndpoint)
+    .build();
+
+// Use this URI to send the end-user's browser to the server
+URI requestURI = request.toURI();
+println """
+{{html}}
+&lt;a href="${requestURI.toString()}" class="button"&gt;Authenticate using OpenProject&lt;/a&gt;
+{{/html}}
+"""
+{{/groovy}}</content>
+</xwikidoc>
